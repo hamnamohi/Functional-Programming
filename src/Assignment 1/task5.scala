@@ -1,20 +1,18 @@
 object task5 {
   def buildMap[A, B](data: Seq[A], f: A => B): Map[A, B] = {
-    def loop(seq: Seq[A], acc: Map[A, B]): Map[A, B] = {
+    def map(seq: Seq[A], res: Map[A, B]): Map[A, B] = {
 //      var acc1 = acc
 //      println(acc)
 //      print(seq)
       val n=seq.length
-      if (seq.length==0) {acc}
+      if (seq.length==0) {res}
       else {
-//     
         val item = f(seq(0))
-//
-        loop(seq.tail, acc + (seq(0) -> item))
+        map(seq.tail,  res+ (seq(0) -> item))
       }
     }
 
-    loop(data, Map[A, B]())
+    map(data, Map[A, B]())
   }
 
 
